@@ -1,0 +1,1 @@
+export { default as CurrentWeatherComponent } from './currentWeather'
