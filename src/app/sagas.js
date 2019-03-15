@@ -1,7 +1,7 @@
 import { put, takeLatest, all, call, fork } from 'redux-saga/effects'
 import { fetchWeatherByGeo, fetchWeatherByCity } from './api'
-import { appFetchWeatherByCitySuccessAction, appFetchWeatherByCityFailureAction, appFetchWeatherByGeoSuccessAction, appFetchWeatherByGeoFailureAction } from './actions'
-import { APP_FETCH_WEATHER_CITY, APP_FETCH_WEATHER_CITY_SUCCESS, APP_FETCH_WEATHER_CITY_FAILURE } from './constants'
+import { appFetchWeatherByCitySuccessAction, appFetchWeatherByCityFailureAction, appFetchWeatherByGeoSuccessAction } from './actions'
+import { APP_FETCH_WEATHER_CITY } from './constants'
 
 export function* weatherFetchByCityFlow(payload) {
   try {
