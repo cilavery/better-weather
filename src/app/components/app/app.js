@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { CurrentWeatherContainer } from '../../containers/currentWeather'
 import { FiveDayContainer } from '../../containers/fiveDay'
+import { LocationUpdateContainer } from '../../containers/locationUpdate'
 
 // import '../../../assets/styles/App.css'
 
@@ -73,6 +74,7 @@ export default class App extends Component {
       <div className="App">
         <CurrentWeatherContainer />
         <FiveDayContainer />
+        <LocationUpdateContainer />
       </div>
     )
   }

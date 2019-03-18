@@ -1,0 +1,1 @@
+export { default as LocationUpdateComponent } from './locationUpdate'

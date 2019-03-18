@@ -1,0 +1,1 @@
+export { default as LocationUpdateContainer } from './locationUpdate'

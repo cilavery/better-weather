@@ -50,3 +50,11 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
  - add location dropdown
  - remove react/redux from production code
  - deploy app
+
+## Thought Process
+
+## TradeOffs
+Using Create React App instead of configuring the build
+
+## With more time
+Build the app without using an external boilerplate

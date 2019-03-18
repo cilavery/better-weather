@@ -1,31 +1,18 @@
 import { put, takeLatest, fork, all, call } from 'redux-saga/effects'
 import {
   fetchWeatherByGeo,
-  fetchFiveDayByGeo,
-  fetchWeatherByCity
+  fetchFiveDayByGeo
 } from './api'
 import {
-  appFetchWeatherByCitySuccessAction,
-  appFetchWeatherByCityFailureAction,
   appFetchWeatherByGeoSuccessAction,
   appFetchWeatherByGeoFailureAction,
   appFetchFiveDayByGeoSuccessAction,
   appFetchFiveDayByGeoFailureAction
 } from './actions'
 import {
-  APP_FETCH_WEATHER_CITY,
   APP_FETCH_WEATHER_GEO,
   APP_FETCH_FIVE_DAY_GEO
 } from './constants'
-
-export function* weatherFetchByCityFlow({ payload }) {
-  try {
-    const response = yield call(fetchWeatherByCity, payload)
-    yield put(appFetchWeatherByCitySuccessAction(response))
-  } catch (error) {
-    yield put(appFetchWeatherByCityFailureAction(error))
-  }
-}
 
 export function* weatherFetchByGeoFlow({ payload }) {
   try {
@@ -45,10 +32,6 @@ export function* weatherFetchFiveDayByGeoFlow({ payload }) {
   }
 }
 
-export function* watchWeatherByCity() {
-  yield takeLatest(APP_FETCH_WEATHER_CITY, weatherFetchByCityFlow)
-}
-
 export function* watchWeatherByGeo() {
   yield takeLatest(APP_FETCH_WEATHER_GEO, weatherFetchByGeoFlow)
 }
@@ -60,7 +43,6 @@ export function* watchFiveDayByGeo() {
 
 export default function* () {
   yield all([
-    fork(watchWeatherByCity),
     fork(watchWeatherByGeo),
     fork(watchFiveDayByGeo)
   ])

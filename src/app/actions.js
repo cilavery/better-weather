@@ -4,10 +4,7 @@ import {
   APP_FETCH_WEATHER_GEO_FAILURE,
   APP_FETCH_FIVE_DAY_GEO,
   APP_FETCH_FIVE_DAY_GEO_SUCCESS,
-  APP_FETCH_FIVE_DAY_GEO_FAILURE,
-  APP_FETCH_WEATHER_CITY,
-  APP_FETCH_WEATHER_CITY_SUCCESS,
-  APP_FETCH_WEATHER_CITY_FAILURE
+  APP_FETCH_FIVE_DAY_GEO_FAILURE
 } from './constants'
 
 export const appFetchWeatherByGeoAction = payload => {
@@ -48,28 +45,6 @@ export const appFetchFiveDayByGeoSuccessAction = response => {
 export const appFetchFiveDayByGeoFailureAction = error => {
   return {
     type: APP_FETCH_FIVE_DAY_GEO_FAILURE,
-    error
-  }
-}
-
-
-export const appFetchWeatherByCityAction = payload => {
-  return {
-    type: APP_FETCH_WEATHER_CITY,
-    payload
-  }
-}
-
-export const appFetchWeatherByCitySuccessAction = response => {
-  return {
-    type: APP_FETCH_WEATHER_CITY_SUCCESS,
-    response
-  }
-}
-
-export const appFetchWeatherByCityFailureAction = error => {
-  return {
-    type: APP_FETCH_WEATHER_CITY_FAILURE,
     error
   }
 }
