@@ -1,9 +1,14 @@
-import { put, takeLatest, all, call, fork } from 'redux-saga/effects'
+import { put, takeLatest, fork, all, call } from 'redux-saga/effects'
 import { fetchWeatherByGeo, fetchWeatherByCity } from './api'
-import { appFetchWeatherByCitySuccessAction, appFetchWeatherByCityFailureAction, appFetchWeatherByGeoSuccessAction } from './actions'
-import { APP_FETCH_WEATHER_CITY } from './constants'
+import {
+  appFetchWeatherByCitySuccessAction,
+  appFetchWeatherByCityFailureAction,
+  appFetchWeatherByGeoSuccessAction,
+  appFetchWeatherByGeoFailureAction
+} from './actions'
+import { APP_FETCH_WEATHER_CITY, APP_FETCH_WEATHER_GEO } from './constants'
 
-export function* weatherFetchByCityFlow(payload) {
+export function* weatherFetchByCityFlow({ payload }) {
   try {
     const response = yield call(fetchWeatherByCity, payload)
     yield put(appFetchWeatherByCitySuccessAction(response))
@@ -12,21 +17,28 @@ export function* weatherFetchByCityFlow(payload) {
   }
 }
 
-export function* weatherFetchByGeoFlow(payload) {
+export function* weatherFetchByGeoFlow({ payload }) {
   try {
     const response = yield call(fetchWeatherByGeo, payload)
+    console.log('geo response', response)
     yield put(appFetchWeatherByGeoSuccessAction(response))
   } catch (error) {
-
+    console.log('error', error)
+    yield put(appFetchWeatherByGeoFailureAction(error))
   }
 }
 
-export function* watchWeatherByCityFetch() {
+export function* watchWeatherByCity() {
   yield takeLatest(APP_FETCH_WEATHER_CITY, weatherFetchByCityFlow)
 }
 
-export default function* appSaga() {
+export function* watchWeatherByGeo() {
+  yield takeLatest(APP_FETCH_WEATHER_GEO, weatherFetchByGeoFlow)
+}
+
+export default function* () {
   yield all([
-    fork.watchWeatherByCityFetch()
+    fork(watchWeatherByCity),
+    fork(watchWeatherByGeo)
   ])
 }

@@ -7,13 +7,12 @@ import { FiveDayComponent } from '../fiveDay'
 class App extends Component {
   componentDidMount() {
     console.log('props in app component', this.props)
+    this.props.getGeoLocation()
   }
+
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <h1>Better Weather</h1>
-        </header>
         <CurrentWeatherComponent />
         <FiveDayComponent />
       </div>
@@ -21,4 +20,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default App

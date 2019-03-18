@@ -1,17 +1,23 @@
 import {
   createStore,
-  applyMiddleware
+  applyMiddleware,
+  compose
 } from 'redux'
 import createSagaMiddleware from 'redux-saga'
+import { all } from 'redux-saga/effects'
 import { AppReducer } from './app'
-import { AppSaga } from './app'
+import { AppSagas } from './app'
 
 const sagaMiddleware = createSagaMiddleware()
+
+// const composeEnhancers = process.env.BUILD === 'production' ? compose : window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+
 const store = createStore(
   AppReducer,
-  applyMiddleware(sagaMiddleware)
+  composeEnhancers(applyMiddleware(sagaMiddleware))
 )
 
-sagaMiddleware.run(AppSaga)
+sagaMiddleware.run(AppSagas)
 
 export default store
