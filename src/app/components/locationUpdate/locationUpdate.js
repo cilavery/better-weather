@@ -5,26 +5,25 @@ export default class LocationUpdate extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      address: '',
-      coordinates: []
+      address: ''
     }
   }
 
   handleChange = address => {
     this.setState({ address })
-  };
+  }
 
   handleSelect = address => {
+    const { getGeoLocation, unit } = this.props
     geocodeByAddress(address)
       .then(results => getLatLng(results[0]))
       .then(latLng =>
-        this.props.getGeoLocation(latLng.lat, latLng.lng)
+        getGeoLocation(latLng.lat, latLng.lng, unit)
       )
       .catch(error => console.error('Error', error))
   }
 
   render() {
-    console.log('coords', this.state.coordinates)
     return (
       <PlacesAutocomplete
         value={this.state.address}

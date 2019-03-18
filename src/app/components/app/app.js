@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { CurrentWeatherContainer } from '../../containers/currentWeather'
 import { FiveDayContainer } from '../../containers/fiveDay'
 import { LocationUpdateContainer } from '../../containers/locationUpdate'
+import { TempUnitContainer } from '../../containers/tempUnit'
 
 // import '../../../assets/styles/App.css'
 
@@ -13,12 +14,12 @@ export default class App extends Component {
     }
   }
   componentDidMount() {
-    const { getGeoLocation } = this.props
+    const { getGeoLocation, unit } = this.props
     if ('geolocation' in navigator) {
       navigator.geolocation.getCurrentPosition(position => {
         let lat = position.coords.latitude
         let lon = position.coords.longitude
-        getGeoLocation(lat, lon)
+        getGeoLocation(lat, lon, unit)
       })
     } else {
       this.setState({
@@ -37,14 +38,6 @@ export default class App extends Component {
       )
     }
 
-    if (this.props.fiveDay.isFetching || Object.keys(this.props.fiveDay).length < 1) {
-      return (
-        <div>
-          <p>Fetching Five Day Forecast</p>
-        </div>
-      )
-    }
-
     if (this.props.weather.fetchError) {
       return (
         <div className="App">
@@ -52,7 +45,6 @@ export default class App extends Component {
         </div>
       )
     }
-
 
     if (this.props.fiveDay.fetchError) {
       return (
@@ -73,8 +65,16 @@ export default class App extends Component {
     return (
       <div className="App">
         <CurrentWeatherContainer />
-        <FiveDayContainer />
+        {
+          this.props.fiveDay.isFetching || Object.keys(this.props.fiveDay).length < 1
+            ?
+            <div>
+              <p>Fetching Five Day Forecast</p>
+            </div>
+            : <FiveDayContainer />
+        }
         <LocationUpdateContainer />
+        <TempUnitContainer />
       </div>
     )
   }

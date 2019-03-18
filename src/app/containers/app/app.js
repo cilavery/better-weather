@@ -2,9 +2,9 @@ import { connect } from 'react-redux'
 import { AppComponent } from '../../components/app'
 import { appFetchWeatherByGeoAction, appFetchFiveDayByGeoAction } from '../../actions'
 
-export const getGeoLocation = (lat, lon, dispatch) => {
+export const getGeoLocation = (lat, lon, unit, dispatch) => {
   const payload = {
-    unit: 'imperial',
+    unit,
     lat,
     lon
   }
@@ -15,13 +15,14 @@ export const getGeoLocation = (lat, lon, dispatch) => {
 const mapStateToProps = state => {
   return {
     weather: state.current.weather,
-    fiveDay: state.fiveDay.weather
+    fiveDay: state.fiveDay.weather,
+    unit: state.unit
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    getGeoLocation: (lat, lon) => getGeoLocation(lat, lon, dispatch)
+    getGeoLocation: (lat, lon, unit) => getGeoLocation(lat, lon, unit, dispatch)
   }
 }
 

@@ -3,7 +3,8 @@ import { FiveDayComponent } from '../../components/fiveDay'
 
 const mapStateToProps = state => {
   return {
-    weather: state.fiveDay.weather.list
+    weather: state.fiveDay.weather.list,
+    unit: state.unit
   }
 }
 

@@ -4,7 +4,8 @@ import {
   APP_FETCH_WEATHER_GEO_FAILURE,
   APP_FETCH_FIVE_DAY_GEO,
   APP_FETCH_FIVE_DAY_GEO_SUCCESS,
-  APP_FETCH_FIVE_DAY_GEO_FAILURE
+  APP_FETCH_FIVE_DAY_GEO_FAILURE,
+  APP_STORE_UPDATE_UNIT
 } from './constants'
 
 const initialState = {
@@ -17,7 +18,8 @@ const initialState = {
     weather: {},
     isFetching: false,
     fetchError: null
-  }
+  },
+  unit: 'imperial'
 }
 
 export default (state = initialState, action) => {
@@ -81,6 +83,11 @@ export default (state = initialState, action) => {
           isFetching: false,
           fetchError: action.error.toString()
         }
+      }
+    case APP_STORE_UPDATE_UNIT:
+      return {
+        ...state,
+        unit: action.payload.unit
       }
     default:
       return state
