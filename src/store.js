@@ -4,7 +4,6 @@ import {
   compose
 } from 'redux'
 import createSagaMiddleware from 'redux-saga'
-import { all } from 'redux-saga/effects'
 import { AppReducer } from './app'
 import { AppSagas } from './app'
 

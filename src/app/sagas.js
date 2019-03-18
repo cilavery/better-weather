@@ -20,10 +20,8 @@ export function* weatherFetchByCityFlow({ payload }) {
 export function* weatherFetchByGeoFlow({ payload }) {
   try {
     const response = yield call(fetchWeatherByGeo, payload)
-    console.log('geo response', response)
     yield put(appFetchWeatherByGeoSuccessAction(response))
   } catch (error) {
-    console.log('error', error)
     yield put(appFetchWeatherByGeoFailureAction(error))
   }
 }

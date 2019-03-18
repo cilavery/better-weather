@@ -1,25 +1,25 @@
 import { connect } from 'react-redux'
-import { AppComponent } from '../../components'
+import { AppComponent } from '../../components/app'
 import { appFetchWeatherByGeoAction } from '../../actions'
 
-export const getGeoLocation = (dispatch) => {
+export const getGeoLocation = (lat, lon, dispatch) => {
   const payload = {
-    lat: 40.678177,
-    lon: -73.944160
+    lat,
+    lon
   }
   dispatch(appFetchWeatherByGeoAction(payload))
 }
 
 const mapStateToProps = state => {
-  console.log('state in app container', state)
+  console.log(state)
   return {
-    weather: state
+    weather: state.current.weather
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    getGeoLocation: () => getGeoLocation(dispatch)
+    getGeoLocation: (lat, lon) => getGeoLocation(lat, lon, dispatch)
   }
 }
 

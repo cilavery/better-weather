@@ -1,13 +1,23 @@
-import React from 'react'
+import React, { Component } from 'react'
 
-const CurrentWeather = (props) => (
-  <div>
-    <h1>Current City presentational</h1>
-    <h3>Current Date</h3>
-    <i>Icon here</i>
-    <p>Temp data here</p>
-    <p>Temp description here</p>
-  </div>
-)
+export default class CurrentWeather extends Component {
 
-export default CurrentWeather
+
+
+  render() {
+    const { dt, main, name, weather } = this.props.weather
+
+    return (
+      < div >
+        <h1>{name}</h1>
+        <h3>{dt}</h3>
+        <i>{weather[0].id}</i>
+        <p>{main.temp}</p>
+        <p>{weather[0].main}</p>
+      </div >
+    )
+  }
+}
+
+
+
