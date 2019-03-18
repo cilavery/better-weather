@@ -1,19 +1,21 @@
 import { connect } from 'react-redux'
 import { AppComponent } from '../../components/app'
-import { appFetchWeatherByGeoAction } from '../../actions'
+import { appFetchWeatherByGeoAction, appFetchFiveDayByGeoAction } from '../../actions'
 
 export const getGeoLocation = (lat, lon, dispatch) => {
   const payload = {
+    unit: 'imperial',
     lat,
     lon
   }
   dispatch(appFetchWeatherByGeoAction(payload))
+  dispatch(appFetchFiveDayByGeoAction(payload))
 }
 
 const mapStateToProps = state => {
-  console.log(state)
   return {
-    weather: state.current.weather
+    weather: state.current.weather,
+    fiveDay: state.fiveDay.weather
   }
 }
 

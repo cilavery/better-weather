@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { CurrentWeatherContainer } from '../../containers/currentWeather'
-import { FiveDayComponent } from '../fiveDay'
+import { FiveDayContainer } from '../../containers/fiveDay'
 
 // import '../../../assets/styles/App.css'
 
@@ -36,10 +36,27 @@ export default class App extends Component {
       )
     }
 
+    if (this.props.fiveDay.isFetching || Object.keys(this.props.fiveDay).length < 1) {
+      return (
+        <div>
+          <p>Fetching Five Day Forecast</p>
+        </div>
+      )
+    }
+
     if (this.props.weather.fetchError) {
       return (
         <div className="App">
           <p>There was a problem getting the weather</p>
+        </div>
+      )
+    }
+
+
+    if (this.props.fiveDay.fetchError) {
+      return (
+        <div className="App">
+          <p>There was a problem getting the five day forecast</p>
         </div>
       )
     }
@@ -55,7 +72,7 @@ export default class App extends Component {
     return (
       <div className="App">
         <CurrentWeatherContainer />
-        <FiveDayComponent />
+        <FiveDayContainer />
       </div>
     )
   }

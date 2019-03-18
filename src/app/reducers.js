@@ -20,8 +20,7 @@ const initialState = {
     weather: {},
     isFetching: false,
     fetchError: null
-  },
-
+  }
 }
 
 export default (state = initialState, action) => {
@@ -52,6 +51,36 @@ export default (state = initialState, action) => {
         ...state,
         current: {
           ...state.current,
+          isFetching: false,
+          fetchError: action.error.toString()
+        }
+      }
+    case APP_FETCH_FIVE_DAY_GEO:
+      return {
+        ...state,
+        fiveDay: {
+          ...state.fiveDay,
+          isFetching: true,
+          fetchError: null
+        }
+      }
+    case APP_FETCH_FIVE_DAY_GEO_SUCCESS:
+      return {
+        ...state,
+        fiveDay: {
+          ...state.fiveDay,
+          weather: {
+            ...action.response,
+          },
+          isFetching: false,
+          fetchError: null
+        }
+      }
+    case APP_FETCH_FIVE_DAY_GEO_FAILURE:
+      return {
+        ...state,
+        fiveDay: {
+          ...state.fiveDay,
           isFetching: false,
           fetchError: action.error.toString()
         }
