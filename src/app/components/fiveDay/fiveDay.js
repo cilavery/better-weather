@@ -12,10 +12,7 @@ export default class FiveDay extends Component {
 
   componentDidMount() {
     const { weather } = this.props
-    const fiveDays = selectFiveDayData(weather)
-    this.setState({
-      temps: fiveDays
-    })
+    this.selectAndSetWeather(weather)
   }
 
   componentDidUpdate(prevProps) {
@@ -23,17 +20,25 @@ export default class FiveDay extends Component {
     const { unit } = this.props
     if (prevProps.unit !== this.props.unit) {
       newTemps = convertTemp(this.state.temps, unit)
-      console.log('NEW TEMPS', newTemps)
       this.setState({
         temps: newTemps
       })
     }
+    if (prevProps.weather !== this.props.weather) {
+      this.selectAndSetWeather(this.props.weather)
+    }
+  }
+
+  selectAndSetWeather(weather) {
+    const fiveDays = selectFiveDayData(weather)
+    this.setState({
+      temps: fiveDays
+    })
   }
 
   render() {
     const { unit } = this.props
     const { temps } = this.state
-    console.log('TEMPS', temps)
     return (
       <Fragment>
         <h4>Five day forecast</h4>

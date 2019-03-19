@@ -25,6 +25,11 @@ export default class CurrentWeather extends Component {
         temp: newTemp
       })
     }
+    if (prevProps.weather.main.temp !== this.props.weather.main.temp) {
+      this.setState({
+        temp: Math.round(this.props.weather.main.temp)
+      })
+    }
   }
 
   render() {

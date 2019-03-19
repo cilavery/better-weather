@@ -17,9 +17,14 @@ export const convertTemp = (temp, unit) => {
   if (unit === 'imperial') {
     if (Array.isArray(temp)) {
       newTempArr = temp.map(item => {
-        console.log('item', item)
-        convertToImperial(Number(item.main.temp))
-        return item
+        let tempObj = {}
+        let newTemp = {
+          temp: convertToImperial(Number(item.main.temp))
+        }
+        tempObj.dt = item.dt
+        tempObj.weather = item.weather
+        tempObj.main = newTemp
+        return tempObj
       })
       return newTempArr
     } else {
@@ -28,10 +33,14 @@ export const convertTemp = (temp, unit) => {
   } else {
     if (Array.isArray(temp)) {
       newTempArr = temp.map(item => {
-        console.log('item', item)
-
-        convertToMetric(Number(item.main.temp))
-        return item
+        let tempObj = {}
+        let newTemp = {
+          temp: convertToMetric(Number(item.main.temp))
+        }
+        tempObj.dt = item.dt
+        tempObj.weather = item.weather
+        tempObj.main = newTemp
+        return tempObj
       })
       return newTempArr
     } else {
