@@ -13,5 +13,9 @@ export {
   TempUnitContainer
 } from './containers'
 
+export {
+  Spinner
+} from './shared'
+
 export { default as AppReducer } from './reducers'
 export { default as AppSagas } from './sagas'

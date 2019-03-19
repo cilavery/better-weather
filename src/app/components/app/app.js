@@ -3,6 +3,7 @@ import { CurrentWeatherContainer } from '../../containers/currentWeather'
 import { FiveDayContainer } from '../../containers/fiveDay'
 import { LocationUpdateContainer } from '../../containers/locationUpdate'
 import { TempUnitContainer } from '../../containers/tempUnit'
+import { Spinner } from '../../shared'
 import Tab from 'react-bootstrap/Tab'
 import Tabs from 'react-bootstrap/Tabs'
 import Navbar from 'react-bootstrap/Navbar'
@@ -46,14 +47,15 @@ export default class App extends Component {
               this.props.weather.isFetching || Object.keys(this.props.weather).length < 1
                 ?
                 <div>
-                  <p>Fetching Weather</p>
+                  <Spinner />
+                  <p className="text-center pt-5">Fetching Weather...</p>
                 </div>
                 : <CurrentWeatherContainer />
             }
             {
               this.props.weather.fetchError
                 ?
-                <div>
+                <div className="text-center pt-5">
                   <p>There was a problem getting the weather</p>
                 </div>
                 : null
@@ -61,8 +63,8 @@ export default class App extends Component {
             {
               !this.state.locationEnabled
                 ?
-                <div>
-                  <p>Please input a city</p>
+                <div className="text-center pt-5">
+                  <p className="text-center pt-5">Please input a city</p>
                 </div>
                 : null
             }
@@ -72,14 +74,15 @@ export default class App extends Component {
               this.props.fiveDay.isFetching || Object.keys(this.props.fiveDay).length < 1
                 ?
                 <div>
-                  <p>Fetching Five Day Forecast</p>
+                  <Spinner />
+                  <p className="text-center pt-5">Fetching Weather...</p>
                 </div>
                 : <FiveDayContainer />
             }
             {
               this.props.fiveDay.fetchError
                 ?
-                <div>
+                <div className="text-center pt-5">
                   <p>There was a problem getting the five day forecast</p>
                 </div>
                 : null
@@ -88,7 +91,7 @@ export default class App extends Component {
         </Tabs>
         <Navbar fixed="top" expand="lg" variant="dark" bg="dark">
           <Container>
-            <Navbar.Brand>Location: {weather.name}</Navbar.Brand>
+            <Navbar.Brand>Location: <em>{weather.name}</em></Navbar.Brand>
             <TempUnitContainer />
             <LocationUpdateContainer />
           </Container>

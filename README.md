@@ -42,14 +42,13 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
 
 ### To Do:
- - Loading animation
- - Error component
  - Add tests
  - privatize api keys
- - add bootsrap
- - add location dropdown
- - remove react/redux from production code
+ - fix dropdown styling
+ - fix tabs - disappears with small screen size
+ - travis
  - deploy app
+ 
 
 ## Thought Process
 
