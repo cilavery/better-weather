@@ -34,16 +34,15 @@ export default class CurrentWeather extends Component {
 
   render() {
     const { date, temp } = this.state
-    const { name, weather } = this.props.weather
+    const { weather } = this.props.weather
     const { unit } = this.props
     const today = date.toDateString()
     return (
-      < div >
-        <h1>{name}</h1>
-        <h3>{today}</h3>
-        <i className={`wi wi-owm-${weather[0].id}`}></i>
-        <p>{temp}</p>
+      <div className="text-center pt-5">
+        <h4>{today}</h4>
         <p>{weather[0].main}</p>
+        <i className={`wi wi-owm-${weather[0].id}`}></i>
+        <p className="pt-5 temp-text">{temp}</p>
         <p>{formatUnit(unit)}</p>
       </div >
     )

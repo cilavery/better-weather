@@ -1,10 +1,12 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import { CurrentWeatherContainer } from '../../containers/currentWeather'
 import { FiveDayContainer } from '../../containers/fiveDay'
 import { LocationUpdateContainer } from '../../containers/locationUpdate'
 import { TempUnitContainer } from '../../containers/tempUnit'
-
-import '../../../assets/styles/weather-icons.css'
+import Tab from 'react-bootstrap/Tab'
+import Tabs from 'react-bootstrap/Tabs'
+import Navbar from 'react-bootstrap/Navbar'
+import Container from 'react-bootstrap/Container'
 
 export default class App extends Component {
   constructor(props) {
@@ -29,53 +31,69 @@ export default class App extends Component {
   }
 
   render() {
-    //@todo make shared components for fetch/error/city input
-    if (this.props.weather.isFetching || Object.keys(this.props.weather).length < 1) {
-      return (
-        <div className="App">
-          <p>Fetching Weather</p>
-        </div>
-      )
-    }
-
-    if (this.props.weather.fetchError) {
-      return (
-        <div className="App">
-          <p>There was a problem getting the weather</p>
-        </div>
-      )
-    }
-
-    if (this.props.fiveDay.fetchError) {
-      return (
-        <div className="App">
-          <p>There was a problem getting the five day forecast</p>
-        </div>
-      )
-    }
-
-    if (!this.state.locationEnabled) {
-      return (
-        <div className="App">
-          <p>Please input a city</p>
-        </div>
-      )
-    }
+    const { weather } = this.props
 
     return (
-      <div className="App">
-        <CurrentWeatherContainer />
-        {
-          this.props.fiveDay.isFetching || Object.keys(this.props.fiveDay).length < 1
-            ?
-            <div>
-              <p>Fetching Five Day Forecast</p>
-            </div>
-            : <FiveDayContainer />
-        }
-        <LocationUpdateContainer />
-        <TempUnitContainer />
-      </div>
+      <Fragment>
+        <Tabs
+          id="controlled-tab-example"
+          activeKey={this.state.key}
+          onSelect={key => this.setState({ key })}
+          className="justify-content-center mt-5"
+        >
+          <Tab eventKey="temp" title="Current Temp">
+            {
+              this.props.weather.isFetching || Object.keys(this.props.weather).length < 1
+                ?
+                <div>
+                  <p>Fetching Weather</p>
+                </div>
+                : <CurrentWeatherContainer />
+            }
+            {
+              this.props.weather.fetchError
+                ?
+                <div>
+                  <p>There was a problem getting the weather</p>
+                </div>
+                : null
+            }
+            {
+              !this.state.locationEnabled
+                ?
+                <div>
+                  <p>Please input a city</p>
+                </div>
+                : null
+            }
+          </Tab>
+          <Tab eventKey="forecast" title="5-Day Forecast">
+            {
+              this.props.fiveDay.isFetching || Object.keys(this.props.fiveDay).length < 1
+                ?
+                <div>
+                  <p>Fetching Five Day Forecast</p>
+                </div>
+                : <FiveDayContainer />
+            }
+            {
+              this.props.fiveDay.fetchError
+                ?
+                <div>
+                  <p>There was a problem getting the five day forecast</p>
+                </div>
+                : null
+            }
+          </Tab>
+        </Tabs>
+        <Navbar fixed="top" expand="lg" variant="dark" bg="dark">
+          <Container>
+            <Navbar.Brand>Location: {weather.name}</Navbar.Brand>
+            <TempUnitContainer />
+            <LocationUpdateContainer />
+          </Container>
+        </Navbar>
+      </Fragment>
     )
   }
 }

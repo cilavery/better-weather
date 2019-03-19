@@ -1,6 +1,9 @@
 import React, { Component, Fragment } from 'react'
 import { selectFiveDayData } from '../../selectors'
 import { calculateDayOfWeek, formatUnit, convertTemp } from '../../shared/utils'
+import Container from 'react-bootstrap/Container'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
 
 export default class FiveDay extends Component {
   constructor(props) {
@@ -40,22 +43,25 @@ export default class FiveDay extends Component {
     const { unit } = this.props
     const { temps } = this.state
     return (
-      <Fragment>
-        <h4>Five day forecast</h4>
-        {
-          temps.map((day, idx) => {
-            return (
-              <div key={idx}>
-                <div>{calculateDayOfWeek(day.dt)}</div>
-                <div>{day.weather[0].main}</div>
-                <div>{Math.round(day.main.temp)}</div>
-                <div className={`wi wi-owm-${day.weather[0].id}`}></div>
-                <div>{formatUnit(unit)}</div>
-              </div>
-            )
-          })
-        }
-      </Fragment>
+      <div className="text-center pt-5">
+        <Container>
+          <Row className="justify-content-center">
+            {
+              temps.map((day, idx) => {
+                return (
+                  <Col sm={1} md={2} key={idx}>
+                    <div className="p-2">{calculateDayOfWeek(day.dt)}</div>
+                    <div className="p-2">{day.weather[0].main}</div>
+                    <i className={`wi wi-owm-${day.weather[0].id} forecast`}></i>
+                    <div className="pt-5">{Math.round(day.main.temp)}</div>
+                    <div>{formatUnit(unit)}</div>
+                  </Col>
+                )
+              })
+            }
+          </Row>
+        </Container>
+      </div>
     )
   }
 }

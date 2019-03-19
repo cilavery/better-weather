@@ -12,3 +12,15 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.temp-text {
+  font-size: 4rem;
+}
+
+i {
+  font-size: 10rem;
+}
+
+i.forecast {
+  font-size: 4rem;
+}

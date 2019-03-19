@@ -8,8 +8,8 @@ export default class TempUnit extends Component {
   render() {
     const { unit } = this.props
     return (
-      <form>
-        <label>Change Unit:</label>
+      <form className="text-secondary">
+        <label className="pr-2">Change Unit:</label>
         <select value={unit} onChange={this.handleChange}>
           <option value="imperial">Fahrenheit</option>
           <option value="metric">Celsius</option>
