@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import { selectFiveDayData } from '../../selectors'
 import { calculateDayOfWeek, formatUnit, convertTemp } from '../../shared/utils'
 import Container from 'react-bootstrap/Container'
