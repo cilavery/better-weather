@@ -49,7 +49,7 @@ export default class FiveDay extends Component {
                 <div>{calculateDayOfWeek(day.dt)}</div>
                 <div>{day.weather[0].main}</div>
                 <div>{Math.round(day.main.temp)}</div>
-                <div>{day.weather[0].id}icon</div>
+                <div className={`wi wi-owm-${day.weather[0].id}`}></div>
                 <div>{formatUnit(unit)}</div>
               </div>
             )

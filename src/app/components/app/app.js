@@ -4,7 +4,7 @@ import { FiveDayContainer } from '../../containers/fiveDay'
 import { LocationUpdateContainer } from '../../containers/locationUpdate'
 import { TempUnitContainer } from '../../containers/tempUnit'
 
-// import '../../../assets/styles/App.css'
+import '../../../assets/styles/weather-icons.css'
 
 export default class App extends Component {
   constructor(props) {

@@ -41,7 +41,7 @@ export default class CurrentWeather extends Component {
       < div >
         <h1>{name}</h1>
         <h3>{today}</h3>
-        <i>{weather[0].id} icon</i>
+        <i className={`wi wi-owm-${weather[0].id}`}></i>
         <p>{temp}</p>
         <p>{weather[0].main}</p>
         <p>{formatUnit(unit)}</p>
