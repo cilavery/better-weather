@@ -45,7 +45,6 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
  - Add tests
  - privatize api keys
  - fix dropdown styling
- - fix tabs - disappears with small screen size
  - travis
  - deploy app
  

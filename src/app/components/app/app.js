@@ -36,13 +36,21 @@ export default class App extends Component {
 
     return (
       <Fragment>
+        <Container>
+          <Navbar bg="dark" variant="dark" className="justify-content-center">
+            <Container>
+              <Navbar.Brand>Location: <em>{weather.name}</em></Navbar.Brand>
+              <LocationUpdateContainer />
+            </Container>
+          </Navbar>
+        </Container>
         <Tabs
           id="controlled-tab-example"
           activeKey={this.state.key}
           onSelect={key => this.setState({ key })}
           className="justify-content-center mt-5"
         >
-          <Tab eventKey="temp" title="Current Temp">
+          <Tab eventKey="temp" title="Current Temp" className="pb-3">
             {
               this.props.weather.isFetching || Object.keys(this.props.weather).length < 1
                 ?
@@ -69,7 +77,7 @@ export default class App extends Component {
                 : null
             }
           </Tab>
-          <Tab eventKey="forecast" title="5-Day Forecast">
+          <Tab eventKey="forecast" title="5-Day Forecast" className="pb-5">
             {
               this.props.fiveDay.isFetching || Object.keys(this.props.fiveDay).length < 1
                 ?
@@ -89,13 +97,14 @@ export default class App extends Component {
             }
           </Tab>
         </Tabs>
-        <Navbar fixed="top" expand="lg" variant="dark" bg="dark">
-          <Container>
-            <Navbar.Brand>Location: <em>{weather.name}</em></Navbar.Brand>
-            <TempUnitContainer />
-            <LocationUpdateContainer />
-          </Container>
-        </Navbar>
+        <Container>
+          <Navbar sticky="bottom" expand="lg" variant="dark" bg="dark">
+            <Container>
+              <Navbar.Brand>Better Weather App</Navbar.Brand>
+              <TempUnitContainer />
+            </Container>
+          </Navbar>
+        </Container>
       </Fragment>
     )
   }

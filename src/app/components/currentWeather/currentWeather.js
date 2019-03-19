@@ -42,8 +42,10 @@ export default class CurrentWeather extends Component {
         <h4>{today}</h4>
         <p>{weather[0].main}</p>
         <i className={`wi wi-owm-${weather[0].id}`}></i>
-        <p className="pt-5 temp-text">{temp}</p>
-        <p>{formatUnit(unit)}</p>
+        <div className="d-flex flex-row justify-content-center align-items-baseline">
+          <p className="pt-5 temp-text">{temp}</p>
+          <p>{formatUnit(unit)}</p>
+        </div>
       </div >
     )
   }

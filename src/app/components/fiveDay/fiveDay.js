@@ -49,12 +49,14 @@ export default class FiveDay extends Component {
             {
               temps.map((day, idx) => {
                 return (
-                  <Col sm={1} md={2} key={idx}>
+                  <Col lg={2} key={idx} className="border p-4">
                     <div className="p-2">{calculateDayOfWeek(day.dt)}</div>
                     <div className="p-2">{day.weather[0].main}</div>
                     <i className={`wi wi-owm-${day.weather[0].id} forecast`}></i>
-                    <div className="pt-5">{Math.round(day.main.temp)}</div>
-                    <div>{formatUnit(unit)}</div>
+                    <div className="d-flex flex-row justify-content-center align-items-baseline">
+                      <div className="pt-5 forecast-text">{Math.round(day.main.temp)}</div>
+                      <div>{formatUnit(unit)}</div>
+                    </div>
                   </Col>
                 )
               })
