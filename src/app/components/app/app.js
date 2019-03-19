@@ -37,7 +37,7 @@ export default class App extends Component {
     return (
       <Fragment>
         <Container>
-          <Navbar bg="dark" variant="dark" className="justify-content-center">
+          <Navbar bg="dark" expand="lg" variant="dark" className="justify-content-center">
             <Container>
               <Navbar.Brand>Location: <em>{weather.name}</em></Navbar.Brand>
               <LocationUpdateContainer />
