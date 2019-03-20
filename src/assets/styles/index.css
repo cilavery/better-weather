@@ -34,3 +34,38 @@ i.forecast {
 .main {
   background-color: red
 }
+
+.autocomplete-dropdown-container {
+  z-index: 4;
+  position: absolute;
+  right: 1vw;
+  top: 7vh;
+}
+
+.location-search-input {
+  width: 20vw;
+  position: absolute;
+  top: 2vh;
+  right: 1vw;
+}
+
+@media only screen and (max-width: 1400px) {
+  .autocomplete-dropdown-container {
+    top: 5vh;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .autocomplete-dropdown-container {
+    right: 4vw;
+    top: 10vh;
+  }
+  
+  .location-search-input {
+    width: 80vw;
+    top: 7vh;
+    right: 4vw;
+    border: 1px solid lightgray;
+  }
+}
+

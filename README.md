@@ -43,8 +43,6 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 
 ### To Do:
  - Add tests
- - privatize api keys
- - fix dropdown styling
  - travis
  - deploy app
  
@@ -56,3 +54,4 @@ Using Create React App instead of configuring the build
 
 ## With more time
 Build the app without using an external boilerplate
+Add 404 page
