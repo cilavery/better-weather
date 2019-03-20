@@ -48,10 +48,11 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
  
 
 ## Thought Process
+Utilize everything I learned during my training at Buildit. This meant implementing a scaleable file structure for my project. I also added sagas and redux to the project and many more tests to the project.
 
 ## TradeOffs
-Using Create React App instead of configuring the build
+Used Create React App instead of configuring the build
 
 ## With more time
-Build the app without using an external boilerplate
+Build the app without using an external boilerplate - get a better understanding of build configuration
 Add 404 page
