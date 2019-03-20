@@ -1,10 +1,10 @@
 import {
-  APP_FETCH_WEATHER_GEO,
-  APP_FETCH_WEATHER_GEO_SUCCESS,
-  APP_FETCH_WEATHER_GEO_FAILURE,
-  APP_FETCH_FIVE_DAY_GEO,
-  APP_FETCH_FIVE_DAY_GEO_SUCCESS,
-  APP_FETCH_FIVE_DAY_GEO_FAILURE,
+  APP_FETCH_WEATHER,
+  APP_FETCH_WEATHER_SUCCESS,
+  APP_FETCH_WEATHER_FAILURE,
+  APP_FETCH_FIVE_DAY,
+  APP_FETCH_FIVE_DAY_SUCCESS,
+  APP_FETCH_FIVE_DAY_FAILURE,
   APP_STORE_UPDATE_UNIT
 } from './constants'
 
@@ -24,7 +24,7 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case APP_FETCH_WEATHER_GEO:
+    case APP_FETCH_WEATHER:
       return {
         ...state,
         current: {
@@ -33,7 +33,7 @@ export default (state = initialState, action) => {
           fetchError: null
         }
       }
-    case APP_FETCH_WEATHER_GEO_SUCCESS:
+    case APP_FETCH_WEATHER_SUCCESS:
       return {
         ...state,
         current: {
@@ -45,7 +45,7 @@ export default (state = initialState, action) => {
           fetchError: null
         }
       }
-    case APP_FETCH_WEATHER_GEO_FAILURE:
+    case APP_FETCH_WEATHER_FAILURE:
       return {
         ...state,
         current: {
@@ -54,7 +54,7 @@ export default (state = initialState, action) => {
           fetchError: action.error.toString()
         }
       }
-    case APP_FETCH_FIVE_DAY_GEO:
+    case APP_FETCH_FIVE_DAY:
       return {
         ...state,
         fiveDay: {
@@ -63,7 +63,7 @@ export default (state = initialState, action) => {
           fetchError: null
         }
       }
-    case APP_FETCH_FIVE_DAY_GEO_SUCCESS:
+    case APP_FETCH_FIVE_DAY_SUCCESS:
       return {
         ...state,
         fiveDay: {
@@ -75,7 +75,7 @@ export default (state = initialState, action) => {
           fetchError: null
         }
       }
-    case APP_FETCH_FIVE_DAY_GEO_FAILURE:
+    case APP_FETCH_FIVE_DAY_FAILURE:
       return {
         ...state,
         fiveDay: {

@@ -19,13 +19,13 @@ describe('App reducer', () => {
     }
   })
 
-  describe('APP_FETCH_WEATHER_GEO', () => {
+  describe('APP_FETCH_WEATHER', () => {
     it('should return initial state', () => {
       expect(reducer(undefined, {})).toEqual(initialState)
     })
-    it('should handle APP_FETCH_WEATHER_GEO', () => {
+    it('should handle APP_FETCH_WEATHER', () => {
       const action = {
-        type: types.APP_FETCH_WEATHER_GEO
+        type: types.APP_FETCH_WEATHER
       }
       expect(reducer(initialState, action)).toEqual({
         current: {
@@ -41,9 +41,9 @@ describe('App reducer', () => {
         unit: 'imperial'
       })
     })
-    it('should handle APP_FETCH_WEATHER_GEO_SUCCESS', () => {
+    it('should handle APP_FETCH_WEATHER_SUCCESS', () => {
       const action = {
-        type: types.APP_FETCH_WEATHER_GEO_SUCCESS,
+        type: types.APP_FETCH_WEATHER_SUCCESS,
         response: { 'temp': '72' }
       }
       expect(reducer(initialState, action)).toEqual({
@@ -60,9 +60,9 @@ describe('App reducer', () => {
         unit: 'imperial'
       })
     })
-    it('should handle APP_FETCH_WEATHER_GEO_FAILURE', () => {
+    it('should handle APP_FETCH_WEATHER_FAILURE', () => {
       const action = {
-        type: types.APP_FETCH_WEATHER_GEO_FAILURE,
+        type: types.APP_FETCH_WEATHER_FAILURE,
         error: 'Something did not work'
       }
       expect(reducer(initialState, action)).toEqual({
@@ -81,10 +81,10 @@ describe('App reducer', () => {
     })
   })
 
-  describe('APP_FETCH_FIVE_DAY_GEO', () => {
-    it('shoould handle APP_FETCH_FIVE_DAY_GEO', () => {
+  describe('APP_FETCH_FIVE_DAY', () => {
+    it('shoould handle APP_FETCH_FIVE_DAY', () => {
       const action = {
-        type: types.APP_FETCH_FIVE_DAY_GEO
+        type: types.APP_FETCH_FIVE_DAY
       }
       expect(reducer(initialState, action)).toEqual({
         current: {
@@ -101,9 +101,9 @@ describe('App reducer', () => {
       })
     })
 
-    it('should handle APP_FETCH_FIVE_DAY_GEO_SUCCESS', () => {
+    it('should handle APP_FETCH_FIVE_DAY_SUCCESS', () => {
       const action = {
-        type: types.APP_FETCH_FIVE_DAY_GEO_SUCCESS,
+        type: types.APP_FETCH_FIVE_DAY_SUCCESS,
         response: { 0: { 'temp': '75' }, 1: { 'temp': '80' } }
       }
       expect(reducer(initialState, action)).toEqual({
@@ -121,9 +121,9 @@ describe('App reducer', () => {
       })
     })
 
-    it('should handle APP_FETCH_FIVE_DAY_GEO_FAILURE', () => {
+    it('should handle APP_FETCH_FIVE_DAY_FAILURE', () => {
       const action = {
-        type: types.APP_FETCH_FIVE_DAY_GEO_FAILURE,
+        type: types.APP_FETCH_FIVE_DAY_FAILURE,
         error: 'Something did not work'
       }
       expect(reducer(initialState, action)).toEqual({

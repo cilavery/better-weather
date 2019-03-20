@@ -1,5 +1,5 @@
 
-export const fetchWeatherByGeo = (payload) => {
+export const fetchWeather = (payload) => {
   const unit = payload.unit
   const lat = payload.lat
   const lon = payload.lon
@@ -12,7 +12,7 @@ export const fetchWeatherByGeo = (payload) => {
     })
 }
 
-export const fetchFiveDayByGeo = (payload) => {
+export const fetchFiveDay = (payload) => {
   const unit = payload.unit
   const lat = payload.lat
   const lon = payload.lon

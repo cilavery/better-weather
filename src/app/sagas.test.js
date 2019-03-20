@@ -1,91 +1,91 @@
 import { call, put, takeLatest } from 'redux-saga/effects'
 import {
-  watchWeatherByGeo,
-  weatherFetchByGeoFlow,
-  weatherFetchFiveDayByGeoFlow,
-  watchFiveDayByGeo
+  watchWeather,
+  weatherFetchFlow,
+  weatherFetchFiveDayFlow,
+  watchFiveDay
 } from './sagas'
 import {
-  appFetchWeatherByGeoSuccessAction,
-  appFetchWeatherByGeoFailureAction,
-  appFetchFiveDayByGeoSuccessAction,
-  appFetchFiveDayByGeoFailureAction
+  appFetchWeatherSuccessAction,
+  appFetchWeatherFailureAction,
+  appFetchFiveDaySuccessAction,
+  appFetchFiveDayFailureAction
 } from './actions'
 import {
-  APP_FETCH_WEATHER_GEO,
-  APP_FETCH_FIVE_DAY_GEO
+  APP_FETCH_WEATHER,
+  APP_FETCH_FIVE_DAY
 } from './constants'
 import {
-  fetchWeatherByGeo,
-  fetchFiveDayByGeo
+  fetchWeather,
+  fetchFiveDay
 } from './api'
 
 jest.mock('./api')
 
 describe('Current Weather Saga', () => {
-  describe('weatherFetchByGeoFlow', () => {
+  describe('weatherFetchFlow', () => {
     let payload
     beforeEach(() => {
       payload = {}
     })
-    it('should call fetchWeatherByGeo api', () => {
-      const gen = weatherFetchByGeoFlow({ payload })
-      expect(gen.next().value).toEqual(call(fetchWeatherByGeo, payload))
+    it('should call fetchWeather api', () => {
+      const gen = weatherFetchFlow({ payload })
+      expect(gen.next().value).toEqual(call(fetchWeather, payload))
     })
 
-    it('should put appFetchWeatherByGeoSuccessAction', () => {
+    it('should put appFetchWeatherSuccessAction', () => {
       const response = {}
-      const gen = weatherFetchByGeoFlow({ payload })
+      const gen = weatherFetchFlow({ payload })
       gen.next()
-      expect(gen.next(response).value).toEqual(put(appFetchWeatherByGeoSuccessAction(response)))
+      expect(gen.next(response).value).toEqual(put(appFetchWeatherSuccessAction(response)))
     })
 
-    it('should put appFetchWeatherByGeoFailure Action', () => {
+    it('should put appFetchWeatherFailure Action', () => {
       const error = {}
-      const gen = weatherFetchByGeoFlow({ payload })
+      const gen = weatherFetchFlow({ payload })
       gen.next()
-      expect(gen.throw(error).value).toEqual(put(appFetchWeatherByGeoFailureAction(error)))
+      expect(gen.throw(error).value).toEqual(put(appFetchWeatherFailureAction(error)))
     })
   })
 
-  describe('watchWeatherByGeo', () => {
-    it('should call weatherFetchByGeoFlow', () => {
-      const gen = watchWeatherByGeo()
-      expect(gen.next().value).toEqual(takeLatest(APP_FETCH_WEATHER_GEO, weatherFetchByGeoFlow))
+  describe('watchWeather', () => {
+    it('should call weatherFetchFlow', () => {
+      const gen = watchWeather()
+      expect(gen.next().value).toEqual(takeLatest(APP_FETCH_WEATHER, weatherFetchFlow))
     })
   })
 })
 
 describe('5-Day Forecast Saga', () => {
-  describe('weatherFetchFiveDayByGeoFlow', () => {
+  describe('weatherFetchFiveDayFlow', () => {
     let payload
     beforeEach(() => {
       payload = {}
     })
-    it('should call fetchFiveDayByGeo api', () => {
-      const gen = weatherFetchFiveDayByGeoFlow({ payload })
-      expect(gen.next().value).toEqual(call(fetchFiveDayByGeo, payload))
+    it('should call fetchFiveDay api', () => {
+      const gen = weatherFetchFiveDayFlow({ payload })
+      expect(gen.next().value).toEqual(call(fetchFiveDay, payload))
     })
 
-    it('should put appFetchFiveDayByGeoSuccessAction', () => {
+    it('should put appFetchFiveDaySuccessAction', () => {
       const response = {}
-      const gen = weatherFetchFiveDayByGeoFlow({ payload })
+      const gen = weatherFetchFiveDayFlow({ payload })
       gen.next()
-      expect(gen.next(response).value).toEqual(put(appFetchFiveDayByGeoSuccessAction(response)))
+      expect(gen.next(response).value).toEqual(put(appFetchFiveDaySuccessAction(response)))
     })
 
-    it('should put appFetchFiveDayByGeoFailure Action', () => {
+    it('should put appFetchFiveDayFailure Action', () => {
       const error = {}
-      const gen = weatherFetchFiveDayByGeoFlow({ payload })
+      const gen = weatherFetchFiveDayFlow({ payload })
       gen.next()
-      expect(gen.throw(error).value).toEqual(put(appFetchFiveDayByGeoFailureAction(error)))
+      expect(gen.throw(error).value).toEqual(put(appFetchFiveDayFailureAction(error)))
     })
   })
 
-  describe('watchFiveDayByGeo', () => {
-    it('should call weatherFetchFiveDayByGeoFlow', () => {
-      const gen = watchFiveDayByGeo()
-      expect(gen.next().value).toEqual(takeLatest(APP_FETCH_FIVE_DAY_GEO, weatherFetchFiveDayByGeoFlow))
+  describe('watchFiveDay', () => {
+    it('should call weatherFetchFiveDayFlow', () => {
+      const gen = watchFiveDay()
+      expect(gen.next().value).toEqual(takeLatest(APP_FETCH_FIVE_DAY, weatherFetchFiveDayFlow))
     })
   })
 })

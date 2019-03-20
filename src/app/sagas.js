@@ -1,49 +1,49 @@
 import { put, takeLatest, fork, all, call } from 'redux-saga/effects'
 import {
-  fetchWeatherByGeo,
-  fetchFiveDayByGeo
+  fetchWeather,
+  fetchFiveDay
 } from './api'
 import {
-  appFetchWeatherByGeoSuccessAction,
-  appFetchWeatherByGeoFailureAction,
-  appFetchFiveDayByGeoSuccessAction,
-  appFetchFiveDayByGeoFailureAction
+  appFetchWeatherSuccessAction,
+  appFetchWeatherFailureAction,
+  appFetchFiveDaySuccessAction,
+  appFetchFiveDayFailureAction
 } from './actions'
 import {
-  APP_FETCH_WEATHER_GEO,
-  APP_FETCH_FIVE_DAY_GEO
+  APP_FETCH_WEATHER,
+  APP_FETCH_FIVE_DAY
 } from './constants'
 
-export function* weatherFetchByGeoFlow({ payload }) {
+export function* weatherFetchFlow({ payload }) {
   try {
-    const response = yield call(fetchWeatherByGeo, payload)
-    yield put(appFetchWeatherByGeoSuccessAction(response))
+    const response = yield call(fetchWeather, payload)
+    yield put(appFetchWeatherSuccessAction(response))
   } catch (error) {
-    yield put(appFetchWeatherByGeoFailureAction(error))
+    yield put(appFetchWeatherFailureAction(error))
   }
 }
 
-export function* weatherFetchFiveDayByGeoFlow({ payload }) {
+export function* weatherFetchFiveDayFlow({ payload }) {
   try {
-    const response = yield call(fetchFiveDayByGeo, payload)
-    yield put(appFetchFiveDayByGeoSuccessAction(response))
+    const response = yield call(fetchFiveDay, payload)
+    yield put(appFetchFiveDaySuccessAction(response))
   } catch (error) {
-    yield put(appFetchFiveDayByGeoFailureAction(error))
+    yield put(appFetchFiveDayFailureAction(error))
   }
 }
 
-export function* watchWeatherByGeo() {
-  yield takeLatest(APP_FETCH_WEATHER_GEO, weatherFetchByGeoFlow)
+export function* watchWeather() {
+  yield takeLatest(APP_FETCH_WEATHER, weatherFetchFlow)
 }
 
-export function* watchFiveDayByGeo() {
-  yield takeLatest(APP_FETCH_FIVE_DAY_GEO, weatherFetchFiveDayByGeoFlow)
+export function* watchFiveDay() {
+  yield takeLatest(APP_FETCH_FIVE_DAY, weatherFetchFiveDayFlow)
 }
 
 
 export default function* () {
   yield all([
-    fork(watchWeatherByGeo),
-    fork(watchFiveDayByGeo)
+    fork(watchWeather),
+    fork(watchFiveDay)
   ])
 }
