@@ -13,7 +13,7 @@ Launches the test runner in the interactive watch mode.<br>
 
 ### Deployment
 ---
-This project is hosted on Github Pages at: [BetterWeather](https://cilavery.github.io/better-weather/)
+This project is hosted on Github Pages at: [BetterWeather](https://cilavery.github.io/better-weather/)<br>
 I used Travis CI for continuous deployment and integration.
 
 ### Thought Process
