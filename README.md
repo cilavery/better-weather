@@ -13,7 +13,8 @@ Launches the test runner in the interactive watch mode.<br>
 
 ### Deployment
 ---
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+This project is hosted on Github Pages at: [BetterWeather](https://cilavery.github.io/better-weather/)
+I used Travis CI for continuous deployment and integration.
 
 ### Thought Process
 ---
