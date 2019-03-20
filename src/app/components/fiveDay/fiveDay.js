@@ -33,7 +33,8 @@ export default class FiveDay extends Component {
   }
 
   selectAndSetWeather(weather) {
-    const fiveDays = selectFiveDayData(weather)
+    let today = new Date()
+    const fiveDays = selectFiveDayData(weather, today)
     this.setState({
       temps: fiveDays
     })
