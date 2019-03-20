@@ -1,15 +1,11 @@
 import 'bootstrap/dist/css/bootstrap.css'
 import './assets/styles/weather-icons.css'
 import './assets/styles/index.css'
-
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
 import { AppContainer } from './app'
 import * as serviceWorker from './serviceWorker'
-
-
-
 import store from './store'
 
 ReactDOM.render(
