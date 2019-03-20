@@ -1,6 +1,5 @@
 import React from 'react'
 import TempUnit from './tempUnit'
-import '../../../setupTests'
 import { shallow } from 'enzyme'
 
 describe('TempUnit Component', () => {

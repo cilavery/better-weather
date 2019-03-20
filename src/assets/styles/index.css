@@ -39,31 +39,25 @@ i.forecast {
   z-index: 4;
   position: absolute;
   right: 1vw;
-  top: 7vh;
+  top: 40px;
 }
 
 .location-search-input {
   width: 20vw;
   position: absolute;
-  top: 2vh;
+  top: 11px;
   right: 1vw;
-}
-
-@media only screen and (max-width: 1400px) {
-  .autocomplete-dropdown-container {
-    top: 5vh;
-  }
 }
 
 @media only screen and (max-width: 600px) {
   .autocomplete-dropdown-container {
     right: 4vw;
-    top: 10vh;
+    top: 90px;
   }
   
   .location-search-input {
     width: 80vw;
-    top: 7vh;
+    top: 65px;
     right: 4vw;
     border: 1px solid lightgray;
   }

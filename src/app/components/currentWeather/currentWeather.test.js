@@ -1,6 +1,5 @@
 import React from 'react'
 import CurrentWeather from './currentWeather'
-import '../../../setupTests'
 import { shallow } from 'enzyme'
 
 describe('currentWeather component', () => {

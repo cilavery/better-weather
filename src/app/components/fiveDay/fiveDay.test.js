@@ -1,6 +1,5 @@
 import React from 'react'
 import FiveDay from './fiveDay'
-import '../../../setupTests'
 import { shallow } from 'enzyme'
 
 describe('FiveDay Component', () => {
