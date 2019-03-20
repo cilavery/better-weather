@@ -67,7 +67,7 @@ export default class App extends Component {
                     weather.fetchError
                       ?
                       <div className="text-center pt-5">
-                        <p>There was a problem getting the weather</p>
+                        <p className="message">There was a problem getting the weather</p>
                       </div>
                       : null
                   }
@@ -75,7 +75,7 @@ export default class App extends Component {
                     !this.state.locationEnabled
                       ?
                       <div className="text-center pt-5">
-                        <p className="text-center pt-5">Please input a city</p>
+                        <p className="message">Please input a city</p>
                       </div>
                       : null
                   }
@@ -94,7 +94,7 @@ export default class App extends Component {
                     fiveDay.fetchError
                       ?
                       <div className="text-center pt-5">
-                        <p>There was a problem getting the five day forecast</p>
+                        <p className="message">There was a problem getting the five day forecast</p>
                       </div>
                       : null
                   }

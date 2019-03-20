@@ -5,11 +5,7 @@ export const calculateDayOfWeek = (UTCFormat) => {
 }
 
 export const formatUnit = (unit) => {
-  if (unit === 'imperial') {
-    return 'ºF'
-  } else {
-    return 'ºC'
-  }
+  return unit === 'imperial' ? 'ºF' : 'ºC'
 }
 
 export const convertTemp = (temp, unit) => {
@@ -49,10 +45,10 @@ export const convertTemp = (temp, unit) => {
   }
 }
 
-const convertToMetric = (temp) => {
+export const convertToMetric = (temp) => {
   return Math.round((5 / 9) * (temp - 32))
 }
 
-const convertToImperial = (temp) => {
+export const convertToImperial = (temp) => {
   return Math.round((temp * 9 / 5) + 32)
 }

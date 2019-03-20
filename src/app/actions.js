@@ -50,7 +50,7 @@ export const appFetchFiveDayFailureAction = error => {
   }
 }
 
-export const appStoreUpdateUnit = payload => {
+export const appStoreUpdateUnitAction = payload => {
   return {
     type: APP_STORE_UPDATE_UNIT,
     payload

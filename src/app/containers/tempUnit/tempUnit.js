@@ -1,12 +1,12 @@
 import { connect } from 'react-redux'
 import { TempUnitComponent } from '../../components/tempUnit'
-import { appStoreUpdateUnit } from '../../actions'
+import { appStoreUpdateUnitAction } from '../../actions'
 
 export const updateUnit = (unit, dispatch) => {
   const payload = {
     unit
   }
-  dispatch(appStoreUpdateUnit(payload))
+  dispatch(appStoreUpdateUnitAction(payload))
 }
 
 const mapStateToProps = state => {
