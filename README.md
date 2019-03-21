@@ -1,10 +1,12 @@
 ## Better Weather App
 I am using node v11.4.0<br>
 API keys have been placed into an .env file which have not been pushed into this repo.<br>
+Keys are needed for REACT_APP_GOOGLE_PLACES_KEY=<KEY> and REACT_APP_OPEN_WEATHER_KEY=<KEY><br>
+Please request keys from me to run app locally.
 
 ### npm start
 ---
-To run this project locally, after obtaining api keys please git clone, cd better-weather, npm install<br>
+To run this project locally, api keys for after obtaining api keys please git clone, cd better-weather, npm install<br>
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 ### npm test
