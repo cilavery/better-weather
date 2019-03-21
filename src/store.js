@@ -9,7 +9,7 @@ import { AppSagas } from './app'
 
 const sagaMiddleware = createSagaMiddleware()
 
-const composeEnhancers = process.env.BUILD === 'production' ? compose : window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 
 const store = createStore(
   AppReducer,

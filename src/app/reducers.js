@@ -5,7 +5,8 @@ import {
   APP_FETCH_FIVE_DAY,
   APP_FETCH_FIVE_DAY_SUCCESS,
   APP_FETCH_FIVE_DAY_FAILURE,
-  APP_STORE_UPDATE_UNIT
+  APP_STORE_UPDATE_UNIT,
+  APP_STORE_LOCATION_ENABLED
 } from './constants'
 
 const initialState = {
@@ -19,7 +20,8 @@ const initialState = {
     isFetching: false,
     fetchError: null
   },
-  unit: 'imperial'
+  unit: 'imperial',
+  locationEnabled: null
 }
 
 export default (state = initialState, action) => {
@@ -88,6 +90,11 @@ export default (state = initialState, action) => {
       return {
         ...state,
         unit: action.payload.unit
+      }
+    case APP_STORE_LOCATION_ENABLED:
+      return {
+        ...state,
+        locationEnabled: action.payload
       }
     default:
       return state

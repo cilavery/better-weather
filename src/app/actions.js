@@ -5,7 +5,8 @@ import {
   APP_FETCH_FIVE_DAY,
   APP_FETCH_FIVE_DAY_SUCCESS,
   APP_FETCH_FIVE_DAY_FAILURE,
-  APP_STORE_UPDATE_UNIT
+  APP_STORE_UPDATE_UNIT,
+  APP_STORE_LOCATION_ENABLED
 } from './constants'
 
 export const appFetchWeatherAction = payload => {
@@ -53,6 +54,13 @@ export const appFetchFiveDayFailureAction = error => {
 export const appStoreUpdateUnitAction = payload => {
   return {
     type: APP_STORE_UPDATE_UNIT,
+    payload
+  }
+}
+
+export const appStoreLocationEnabledAction = payload => {
+  return {
+    type: APP_STORE_LOCATION_ENABLED,
     payload
   }
 }

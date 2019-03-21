@@ -17,22 +17,26 @@ export default class App extends Component {
     }
   }
   componentDidMount() {
-    const { getGeoLocation, unit } = this.props
     if ('geolocation' in navigator) {
-      navigator.geolocation.getCurrentPosition(position => {
-        let lat = position.coords.latitude
-        let lon = position.coords.longitude
-        getGeoLocation(lat, lon, unit)
-      })
-    } else {
-      this.setState({
-        locationEnabled: false
-      })
+      navigator.geolocation.getCurrentPosition(this.successGeo, this.errorGeo)
     }
   }
 
+  successGeo = (position) => {
+    const { getGeoLocation, unit, updateLocationEnabled } = this.props
+    let lat = position.coords.latitude
+    let lon = position.coords.longitude
+    getGeoLocation(lat, lon, unit)
+    updateLocationEnabled(true)
+  }
+
+  errorGeo = () => {
+    const { updateLocationEnabled } = this.props
+    updateLocationEnabled(false)
+  }
+
   render() {
-    const { weather, fiveDay } = this.props
+    const { weather, fiveDay, locationEnabled } = this.props
     return (
       <div>
         {
@@ -55,46 +59,48 @@ export default class App extends Component {
               >
                 <Tab eventKey="temp" title="Current Temp" className="pb-3">
                   {
-                    weather.isFetching || Object.keys(weather).length < 1
-                      ?
-                      <div>
+                    !locationEnabled
+                      ? <div className="text-center pt-5">
                         <Spinner />
-                        <p className="text-center pt-5">Fetching Weather...</p>
+                        <p className="message">Please input a city</p>
                       </div>
-                      : <CurrentWeatherContainer />
+                      : locationEnabled && (weather.isFetching || Object.keys(weather).length < 1)
+                        ?
+                        <div>
+                          <Spinner />
+                          <p className="text-center pt-5">Fetching Weather...</p>
+                        </div>
+                        : <CurrentWeatherContainer />
                   }
                   {
                     weather.fetchError
                       ?
                       <div className="text-center pt-5">
-                        <p className="message">There was a problem getting the weather</p>
-                      </div>
-                      : null
-                  }
-                  {
-                    !this.state.locationEnabled
-                      ?
-                      <div className="text-center pt-5">
-                        <p className="message">Please input a city</p>
+                        <p className="error-text">There was a problem getting the weather</p>
                       </div>
                       : null
                   }
                 </Tab>
                 <Tab eventKey="forecast" title="5-Day Forecast" className="pb-5">
                   {
-                    fiveDay.isFetching || Object.keys(fiveDay).length < 1
-                      ?
-                      <div>
+                    !locationEnabled
+                      ? <div className="text-center pt-5">
                         <Spinner />
-                        <p className="text-center pt-5">Fetching Weather...</p>
+                        <p className="message">Please input a city</p>
                       </div>
-                      : <FiveDayContainer />
+                      : locationEnabled && (fiveDay.isFetching || Object.keys(fiveDay).length < 1)
+                        ?
+                        <div>
+                          <Spinner />
+                          <p className="text-center pt-5">Fetching Weather...</p>
+                        </div>
+                        : <FiveDayContainer />
                   }
                   {
                     fiveDay.fetchError
                       ?
                       <div className="text-center pt-5">
-                        <p className="message">There was a problem getting the five day forecast</p>
+                        <p className="error-text">There was a problem getting the five day forecast</p>
                       </div>
                       : null
                   }
@@ -115,4 +121,3 @@ export default class App extends Component {
     )
   }
 }
-

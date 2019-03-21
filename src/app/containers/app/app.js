@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import { AppComponent } from '../../components/app'
-import { appFetchWeatherAction, appFetchFiveDayAction } from '../../actions'
+import { appFetchWeatherAction, appFetchFiveDayAction, appStoreLocationEnabledAction } from '../../actions'
 
 export const getGeoLocation = (lat, lon, unit, dispatch) => {
   const payload = {
@@ -12,17 +12,23 @@ export const getGeoLocation = (lat, lon, unit, dispatch) => {
   dispatch(appFetchFiveDayAction(payload))
 }
 
+export const updateLocationEnabled = (payload, dispatch) => {
+  dispatch(appStoreLocationEnabledAction(payload))
+}
+
 const mapStateToProps = state => {
   return {
     weather: state.current.weather,
     fiveDay: state.fiveDay.weather,
-    unit: state.unit
+    unit: state.unit,
+    locationEnabled: state.locationEnabled
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    getGeoLocation: (lat, lon, unit) => getGeoLocation(lat, lon, unit, dispatch)
+    getGeoLocation: (lat, lon, unit) => getGeoLocation(lat, lon, unit, dispatch),
+    updateLocationEnabled: (payload) => updateLocationEnabled(payload, dispatch)
   }
 }
 

@@ -15,7 +15,8 @@ describe('App reducer', () => {
         isFetching: false,
         fetchError: null
       },
-      unit: 'imperial'
+      unit: 'imperial',
+      locationEnabled: null
     }
   })
 
@@ -38,7 +39,8 @@ describe('App reducer', () => {
           isFetching: false,
           fetchError: null
         },
-        unit: 'imperial'
+        unit: 'imperial',
+        locationEnabled: null
       })
     })
     it('should handle APP_FETCH_WEATHER_SUCCESS', () => {
@@ -57,7 +59,8 @@ describe('App reducer', () => {
           isFetching: false,
           fetchError: null
         },
-        unit: 'imperial'
+        unit: 'imperial',
+        locationEnabled: null
       })
     })
     it('should handle APP_FETCH_WEATHER_FAILURE', () => {
@@ -76,7 +79,8 @@ describe('App reducer', () => {
           isFetching: false,
           fetchError: null
         },
-        unit: 'imperial'
+        unit: 'imperial',
+        locationEnabled: null
       })
     })
   })
@@ -97,7 +101,8 @@ describe('App reducer', () => {
           isFetching: true,
           fetchError: null
         },
-        unit: 'imperial'
+        unit: 'imperial',
+        locationEnabled: null
       })
     })
 
@@ -117,7 +122,8 @@ describe('App reducer', () => {
           isFetching: false,
           fetchError: null
         },
-        unit: 'imperial'
+        unit: 'imperial',
+        locationEnabled: null
       })
     })
 
@@ -137,7 +143,8 @@ describe('App reducer', () => {
           isFetching: false,
           fetchError: 'Something did not work'
         },
-        unit: 'imperial'
+        unit: 'imperial',
+        locationEnabled: null
       })
     })
   })
@@ -159,7 +166,8 @@ describe('App reducer', () => {
           isFetching: false,
           fetchError: null
         },
-        unit: 'metric'
+        unit: 'metric',
+        locationEnabled: null
       })
     })
   })

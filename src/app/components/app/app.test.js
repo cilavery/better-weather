@@ -23,7 +23,7 @@ describe('App Component', () => {
   it('should render text for user to input city if geolocation is not enabled', () => {
     const wrapper = shallow(<App {...props} />)
     wrapper.setState({ locationEnabled: false })
-    expect(wrapper.find('.message').length).toEqual(1)
+    expect(wrapper.find('.message').length).toEqual(2)
   })
   it('should render spinner if weather data & forecast data isFetching is true', () => {
     let newProps = { ...props }
@@ -35,8 +35,7 @@ describe('App Component', () => {
     let newProps = { ...props }
     newProps.weather.fetchError = true
     const wrapper = shallow(<App {...props} />)
-    wrapper.setState({ locationEnabled: false })
-    expect(wrapper.find('.message').length).toEqual(2)
+    expect(wrapper.find('.error-text').length).toEqual(1)
   })
 
 })
