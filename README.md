@@ -1,7 +1,7 @@
 ## Better Weather App
 I am using node v11.4.0<br>
 API keys have been placed into an .env file which have not been pushed into this repo.<br>
-Keys are needed for REACT_APP_GOOGLE_PLACES_KEY=<KEY> and REACT_APP_OPEN_WEATHER_KEY=<KEY><br>
+Keys are needed for REACT_APP_GOOGLE_PLACES_KEY=`<KEY`> and REACT_APP_OPEN_WEATHER_KEY=`<KEY`><br>
 Please request keys from me to run app locally.
 
 ### npm start
