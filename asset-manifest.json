@@ -1,0 +1,16 @@
+{
+  "main.css": "/better-weather/static/css/main.61a1905d.chunk.css",
+  "main.js": "/better-weather/static/js/main.fbf8ff7c.chunk.js",
+  "main.js.map": "/better-weather/static/js/main.fbf8ff7c.chunk.js.map",
+  "runtime~main.js": "/better-weather/static/js/runtime~main.21766090.js",
+  "runtime~main.js.map": "/better-weather/static/js/runtime~main.21766090.js.map",
+  "static/css/2.5435c558.chunk.css": "/better-weather/static/css/2.5435c558.chunk.css",
+  "static/js/2.fec5a13f.chunk.js": "/better-weather/static/js/2.fec5a13f.chunk.js",
+  "static/js/2.fec5a13f.chunk.js.map": "/better-weather/static/js/2.fec5a13f.chunk.js.map",
+  "index.html": "/better-weather/index.html",
+  "precache-manifest.497a682897b4f18db62e0f4d47520314.js": "/better-weather/precache-manifest.497a682897b4f18db62e0f4d47520314.js",
+  "service-worker.js": "/better-weather/service-worker.js",
+  "static/css/2.5435c558.chunk.css.map": "/better-weather/static/css/2.5435c558.chunk.css.map",
+  "static/css/main.61a1905d.chunk.css.map": "/better-weather/static/css/main.61a1905d.chunk.css.map",
+  "static/media/weather-icons.css": "/better-weather/static/media/weathericons-regular-webfont.ecaf8b48.svg"
+}
